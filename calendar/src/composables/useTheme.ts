@@ -9,16 +9,16 @@ function readTheme(): Theme {
 
 const theme = ref<Theme>(readTheme())
 
-export function useTheme() {
-    watch(
-        theme,
-        (value) => {
-            document.documentElement.dataset.theme = value
-            localStorage.setItem(STORAGE_KEY, value)
-        },
-        { immediate: true },
-    )
+watch(
+    theme,
+    (value) => {
+        document.documentElement.dataset.theme = value
+        localStorage.setItem(STORAGE_KEY, value)
+    },
+    { immediate: true },
+)
 
+export function useTheme() {
     function toggleTheme() {
         theme.value = theme.value === 'dark' ? 'light' : 'dark'
     }

@@ -17,41 +17,51 @@ const dateLabels = computed(() =>
 </script>
 
 <template>
-    <div class="calendar">
-        <section
-            v-for="(day, dayIndex) in weekDays"
-            :key="day.dateStr"
-            class="day"
-            :class="{ 'day--today': day.isToday }"
-        >
-            <header class="day__header">
-                <span class="day__date">{{ dateLabels[dayIndex] }}</span>
-                <span class="day__meta">
-                    {{ dayNames[dayIndex] }}
-                    <em class="day__count">{{ dailyStats[dayIndex] }} {{ t('calendar.hoursShort') }}</em>
-                </span>
-            </header>
-            <div class="day__slots">
-                <CalendarCell
-                    v-for="cell in dayColumns[dayIndex]"
-                    :key="cell.id"
-                    :cell="cell"
-                    :selected="selectedSlots.has(cell.id)"
-                    :anchored="anchoredId === cell.id"
-                    @select="handleSlotClick"
-                />
-            </div>
-        </section>
+    <div class="calendar-scroll">
+        <div class="calendar">
+            <section
+                v-for="(day, dayIndex) in weekDays"
+                :key="day.dateStr"
+                class="day"
+                :class="{ 'day--today': day.isToday }"
+            >
+                <header class="day__header">
+                    <span class="day__date">{{ dateLabels[dayIndex] }}</span>
+                    <span class="day__meta">
+                        {{ dayNames[dayIndex] }}
+                        <em class="day__count">{{ dailyStats[dayIndex] }} {{ t('calendar.hoursShort') }}</em>
+                    </span>
+                </header>
+                <div class="day__slots">
+                    <CalendarCell
+                        v-for="cell in dayColumns[dayIndex]"
+                        :key="cell.id"
+                        :cell="cell"
+                        :selected="selectedSlots.has(cell.id)"
+                        :anchored="anchoredId === cell.id"
+                        @select="handleSlotClick"
+                    />
+                </div>
+            </section>
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
 @use '../../shared/helpers' as *;
 
+.calendar-scroll {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding: rem(6);
+    margin: rem(-6);
+}
+
 .calendar {
     display: grid;
     grid-template-columns: repeat(5, minmax(rem(116), 1fr));
     gap: rem(12);
+    min-width: rem(628);
 }
 
 .day__header {
@@ -101,6 +111,12 @@ const dateLabels = computed(() =>
 }
 
 @include mobile {
+    .calendar-scroll {
+        overflow-x: visible;
+        padding: 0;
+        margin: 0;
+    }
+
     .calendar {
         grid-template-columns: minmax(0, 1fr);
         gap: rem(24);

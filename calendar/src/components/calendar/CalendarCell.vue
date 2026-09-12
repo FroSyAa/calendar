@@ -40,13 +40,11 @@ const emit = defineEmits<{ select: [id: string] }>()
     transition:
         background-color var(--transition-duration),
         border-color var(--transition-duration),
-        color var(--transition-duration),
-        transform var(--transition-duration);
+        color var(--transition-duration);
 
     @include hover {
         border-color: var(--accent);
         color: var(--text-primary);
-        transform: scale(1.06);
     }
 
     &:active {
