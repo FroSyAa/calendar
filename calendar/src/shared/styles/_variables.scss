@@ -29,6 +29,9 @@
     --accent: #B1A2FF;
     --accent-secondary: #983afc;
     --accent-shade: color-mix(in srgb, var(--accent) 70%, black);
+
+    --danger: #e5484d;
+    --range-outline: #FFFFFF;
 }
 
 :root[data-theme='light'] {
@@ -43,4 +46,7 @@
     --accent: #FBAE3C;
     --accent-secondary: #d7471a;
     --accent-shade: color-mix(in srgb, var(--accent) 70%, black);
+
+    --danger: #e5484d;
+    --range-outline: #131313;
 }
