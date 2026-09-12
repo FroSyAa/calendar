@@ -51,17 +51,38 @@ const dateLabels = computed(() =>
 @use '../../shared/helpers' as *;
 
 .calendar-scroll {
+    width: 100%;
     overflow-x: auto;
+    overflow-y: hidden;
     overscroll-behavior-x: contain;
-    padding: rem(6);
-    margin: rem(-6);
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+
+    &::-webkit-scrollbar {
+        height: rem(6);
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: rem(3);
+    }
 }
 
 .calendar {
     display: grid;
     grid-template-columns: repeat(5, minmax(rem(116), 1fr));
     gap: rem(12);
-    min-width: rem(628);
+    width: 100%;
+}
+
+@include laptop {
+    .calendar {
+        min-width: rem(628);
+    }
 }
 
 .day__header {
@@ -110,11 +131,15 @@ const dateLabels = computed(() =>
     gap: rem(6);
 }
 
+@include tablet {
+    .calendar {
+        min-width: rem(628);
+    }
+}
+
 @include mobile {
     .calendar-scroll {
-        overflow-x: visible;
-        padding: 0;
-        margin: 0;
+        overflow: visible;
     }
 
     .calendar {
