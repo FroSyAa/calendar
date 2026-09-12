@@ -17,12 +17,6 @@
 ```bash
 npm install
 npm run dev
-
-## Запуск
-
-```bash
-npm install
-npm run dev
 ```
 
 ЛИБО, если есть make
