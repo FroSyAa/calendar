@@ -1,3 +1,14 @@
 {
-    "Hello World": "HelloWorld!"
+  "calendar": {
+    "title": "Availability Calendar",
+    "clearAll": "Clear all marks",
+    "prevWeek": "Previous",
+    "nextWeek": "Next",
+    "totalHours": "Total hours this week",
+    "days": ["MON", "TUE", "WED", "THU", "FRI"],
+    "hours": "Hours"
+  },
+  "common": {
+    "toggleLanguage": "Toggle language"
+  }
 }
