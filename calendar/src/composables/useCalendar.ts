@@ -117,9 +117,6 @@ function handleSlotClick(slotId: string) {
     const anchor = rangeAnchor.value
 
     if (anchor && anchor.id === slotId) {
-        const next = new Set(selectedSlots.value)
-        next.delete(slotId)
-        selectedSlots.value = next
         rangeAnchor.value = null
         return
     }
@@ -128,16 +125,20 @@ function handleSlotClick(slotId: string) {
         const anchorSlot = slotMap.value.get(anchor.id)
         rangeAnchor.value = null
         if (!anchorSlot) return
-        applyRange(anchorSlot, slot, !selectedSlots.value.has(slotId))
+        const anchorSelected = selectedSlots.value.has(anchor.id)
+        const slotSelected = selectedSlots.value.has(slotId)
+        applyRange(anchorSlot, slot, !(anchorSelected && slotSelected))
         return
     }
 
     const next = new Set(selectedSlots.value)
     if (next.has(slotId)) {
         next.delete(slotId)
-    } else {
-        next.add(slotId)
+        selectedSlots.value = next
+        return
     }
+
+    next.add(slotId)
     selectedSlots.value = next
     rangeAnchor.value = { id: slotId }
 }

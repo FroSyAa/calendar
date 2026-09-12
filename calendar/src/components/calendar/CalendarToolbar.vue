@@ -56,6 +56,7 @@ function confirmClear() {
     justify-content: center;
     gap: rem(16);
     margin-top: rem(28);
+    max-width: 100%;
 }
 
 .confirm__title {
@@ -90,18 +91,34 @@ function confirmClear() {
         bottom: 0;
         z-index: 20;
         justify-content: space-between;
-        gap: rem(10);
+        gap: rem(8);
         margin: 0;
-        padding: rem(12) rem(16);
+        padding: rem(12) rem(12);
         padding-bottom: calc(rem(12) + env(safe-area-inset-bottom, 0px));
         background: color-mix(in srgb, var(--bg-primary) 90%, transparent);
         backdrop-filter: blur(8px);
         border-top: rem(1) solid var(--bg-elevated);
+        overflow-x: hidden;
     }
 
     .nav__button {
         min-height: rem(44);
-        padding: rem(10) rem(16);
+        padding: rem(10) rem(12);
+        flex: 1 1 0;
+        min-width: 0;
+    }
+}
+
+@include mobile-s {
+    .nav {
+        padding: rem(10) rem(8);
+        padding-bottom: calc(rem(10) + env(safe-area-inset-bottom, 0px));
+        gap: rem(6);
+    }
+
+    .nav__button {
+        padding: rem(8) rem(6);
+        font-size: rem(12);
     }
 }
 </style>
