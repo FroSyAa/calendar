@@ -1,14 +1,26 @@
 {
-  "calendar": {
-    "title": "Availability Calendar",
-    "clearAll": "Clear all marks",
-    "prevWeek": "Previous",
-    "nextWeek": "Next",
-    "totalHours": "Total hours this week",
-    "days": ["MON", "TUE", "WED", "THU", "FRI"],
-    "hours": "Hours"
-  },
-  "common": {
-    "toggleLanguage": "Toggle language"
-  }
+    "common": {
+        "toggleLanguage": "Switch language",
+        "toggleTheme": "Switch theme",
+        "cancel": "Cancel"
+    },
+    "calendar": {
+        "prevWeek": "Previous",
+        "nextWeek": "Next",
+        "clearWeek": "Clear week",
+        "clearWeekShort": "Clear",
+        "clearConfirmTitle": "Are you sure?",
+        "clearConfirmText": "All marks for this week will be lost.",
+        "totalFree": "Total free hours",
+        "hoursShort": "h",
+        "days": ["MON", "TUE", "WED", "THU", "FRI"],
+        "hintFirst": "Click a free slot to mark the hour. A second click on the marked slot sets the start of the range.",
+        "hintSecond": "Click a second slot: the range between them will be toggled.",
+        "today": "today"
+    },
+    "legend": {
+        "free": "Free",
+        "selected": "Selected",
+        "past": "Past time"
+    }
 }
