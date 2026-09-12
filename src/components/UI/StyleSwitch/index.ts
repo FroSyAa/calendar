@@ -1,0 +1,1 @@
+export { StyleSwitch } from './StyleSwitch';

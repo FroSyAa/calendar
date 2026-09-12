@@ -1,0 +1,120 @@
+{
+    "header": {
+        "brand": "BlankPortfolio",
+        "openMenu": "Open menu",
+        "closeMenu": "Close menu"
+    },
+    "navigation": {
+        "aboutMe": "About Me",
+        "experience": "Work experience",
+        "skills": "Skills",
+        "contacts": "Contacts"
+    },
+    "hero": {
+        "hello": "Hello!",
+        "me": "I'm ",
+        "name": "Blank!",
+        "firstMessage": "Fullstack developer",
+        "secondMessage": "I can develop your project",
+        "thirdMessage": "I bring your ideas to life in code!"
+    },
+    "aboutMe": {
+        "title": "About Me",
+        "me": "My name is Nikita Shipunov, I'm 19 and currently a 3rd-year student at BSTU \"Voenmeh\".",
+        "firstText": "A backend developer at heart (frontend developer by appearance) and a clean architecture enthusiast.",
+        "secondText": "In programming, I value system integrity and elegance; in life, I appreciate creative approaches and complex mechanics. Whether it's building intricate modpacks in Minecraft with Avaritia or automating production chains in sandbox games — I thrive on processes where simple building blocks evolve into something complex and fully functional.",
+        "thirdText": "I work with Node.js because I see it as the ideal balance of flexibility and structure for tackling complex challenges. I build my own projects from scratch, with a strong focus on architectural cleanliness and scalability.",
+        "photoAlt": "There's a picture of me here"
+    },
+    "experience": {
+        "title": "Experience",
+        "items": [
+            {
+                "date": "September 2024 — June 2025",
+                "position": "Freelance Fullstack Developer",
+                "project": "Independent practice — helping students with coursework, theses and pet projects",
+                "summary": "Alongside my studies, I took on freelance work developing and finishing student projects: coursework, thesis programming components, and pet projects.",
+                "description": "While studying, I took on freelance work from fellow students: helped with coursework and thesis projects that had a programming component, picked up and finished other people's code, and built pet and coursework projects from scratch to spec.\n\nTasks ranged widely in scope and stack — from simple lab assignments to small full projects with a database and business logic. It taught me to get up to speed quickly in someone else's code and requirements, explain decisions to a non-technical client (a fellow student, not a developer), and hit deadlines tied to submission dates.\n\nThis is where I really got hooked on development — some of the ideas that later shaped StudBot (including the shared solutions module) grew directly out of this experience."
+            },
+            {
+                "date": "August 2025 — May 2026",
+                "position": "Founder & Lead Backend Developer",
+                "project": "StudBot — Telegram platform for a university",
+                "summary": "Designed and single-handedly built a Telegram platform for students: schedules, a shared solutions base, matchmaking, gamification. Full cycle — from architecture to security and deployment.",
+                "description": "StudBot was born from the desire to automate my freelance team handling coursework and diplomas — I wanted a tool for receiving and distributing orders. Along the way, I realized universities have other everyday issues: inconvenient schedules, no shared repository of solved typical tasks, and a dull student experience without gamification. So the project grew into a multi-module platform: schedules, personalized timetable cards, a solution database (crowdsourced by students), a moderated dating system, achievements, and tools for group leaders.\n\nI built everything solo: designed the architecture, wrote the backend, modeled the data, handled deployment, and managed security — from web vulnerability protection to load control. The schedule image generation had to be rewritten — the first version couldn't handle the load, while the second ran stably even under concurrent requests.\n\nThe platform continues to grow, and the architecture was designed to be adaptable for other universities. What I took away: hands-on experience of sole product ownership at every level — from user needs to keeping it running under pressure."
+            },
+            {
+                "date": "May 2026 — present",
+                "position": "Fullstack Developer (pet project)",
+                "project": "We — an app for couples to spend time together",
+                "summary": "Designing and building the microservice backend for a couples app: Auth Service, User Service, Media Service (S3), event-driven communication over Kafka instead of direct HTTP calls.",
+                "description": "After stepping back from StudBot in May 2026, I started a new pet project — \"We\", an app that helps couples plan and diversify the time they spend together: shared activities, mini-games, geolocation, and other two-person mechanics. This time I'm deliberately building it as a proper microservice architecture rather than a monolith.\n\nSo far I've built an Auth Service, a User Service, and a Media Service backed by S3 for file storage, each with explicit API contracts defined up front. Instead of direct synchronous HTTP calls between services, communication runs through Kafka — so services stay decoupled and resilient to each other's downtime.\n\nFor me the project is mainly a testbed for distributed-systems concerns: service boundaries, contract design, eventual consistency, and object storage integration. The product side (games, geolocation, and the rest) is still being worked out; next up is building out the remaining services."
+            }
+        ]
+    },
+    "skills": {
+        "titleHard": "Hard Skills",
+        "titleSoft": "Soft Skills",
+        "hard": [
+            {
+                "category": "Backend languages",
+                "items": "Python, TypeScript, C/C++, SQL"
+            },
+            {
+                "category": "Backend frameworks",
+                "items": "aiogram (Telegram Bot API), NestJS (Fastify), Fastify"
+            },
+            {
+                "category": "Databases & storage",
+                "items": "PostgreSQL, MySQL, Redis, S3"
+            },
+            {
+                "category": "ORM & migrations",
+                "items": "SQLAlchemy 2.0 (async), Prisma ORM"
+            },
+            {
+                "category": "Async & queues / event bus",
+                "items": "asyncio, Kafka"
+            },
+            {
+                "category": "API & inter-service communication",
+                "items": "REST API, WebSockets, Protobuf"
+            },
+            {
+                "category": "Infrastructure & tools",
+                "items": "Docker, Docker Compose, Git (GitHub)"
+            },
+            {
+                "category": "Frontend (for my own projects and this site)",
+                "items": "HTML (HTML5), CSS (CSS3), SASS (SCSS), React"
+            }
+        ],
+        "soft": [
+            {
+                "title": "Autonomy and full product ownership",
+                "text": "I can take a project end to end — from architecture to production — and see it through on my own."
+            },
+            {
+                "title": "Fast, self-directed learning",
+                "text": "I pick up new stacks and approaches (like moving from a monolith to microservices) without a mentor — through docs, experiments, and refactoring."
+            },
+            {
+                "title": "Attention to architecture and detail",
+                "text": "I think through a system at the level of contracts, ownership boundaries, and fault tolerance — not just \"make it work\"."
+            },
+            {
+                "title": "Communication",
+                "text": "Clear spoken and written communication, easy to find common ground with different people, open to feedback."
+            },
+            {
+                "title": "Flexibility and teamwork",
+                "text": "Experience both building solo and fitting into someone else's processes and architecture as part of a team."
+            }
+        ]
+    },
+    "contacts": {
+        "contactTitle": "Let's build something together",
+        "contactFirstText": "Currently open to new opportunities and interesting collaborations.",
+        "contactSecondText": "Do not hesitate to contact!"
+    }
+}

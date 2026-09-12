@@ -1,0 +1,95 @@
+@use '../../shared/helpers/' as *;
+
+.contacts {
+    background: var(--bg-primary);
+    min-height: rem(720);
+    display: grid;
+    place-items: center;
+    padding: 4% 4%;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: rem(24);
+        width: 90%;
+        min-height: rem(640);
+        background: var(--bg-secondary);
+        padding: rem(40) rem(24);
+    }
+
+    &__h1 {
+        margin: 0;
+        font-family: var(--font-family-accent);
+        font-size: fluid(52, 32);
+        text-align: center;
+        color: var(--accent);
+    }
+
+    &__h2 {
+        margin: 0;
+        width: 85%;
+        font-size: fluid(32, 20);
+        color: var(--text-secondary);
+        font-family: var(--font-family-base);
+        text-align: center;
+    }
+
+    &__socials {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(24);
+        margin-top: rem(16);
+    }
+
+    &__icon-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: rem(48);
+        height: rem(48);
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: none;
+        color: var(--text-secondary);
+        transition: transform 0.3s ease, color 0.3s ease;
+
+        &__icon {
+            width: rem(56);
+            height: rem(56);
+            display: block;
+            object-fit: contain;
+            flex-shrink: 0;
+            fill: currentColor;
+        }
+
+        &:hover {
+            transform: scale(1.05);
+            color: var(--accent);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+    }
+}
+
+@include mobile {
+    .contacts {
+        &__content {
+            width: 100%;
+            padding: rem(32) rem(20);
+        }
+
+        &__h2 {
+            width: 100%;
+        }
+
+        &__socials {
+            flex-wrap: wrap;
+        }
+    }
+}

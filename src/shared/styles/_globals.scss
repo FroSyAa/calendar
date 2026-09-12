@@ -1,0 +1,64 @@
+@use '../helpers' as *;
+
+body {
+    @include fluid-text(18, 24);
+
+    font-family: var(--font-family-base);
+    letter-spacing: -0.03em;
+    color: var(--text-secondary);
+    background-color: var(--bg-primary);
+
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+    color: var(--accent);
+    font-weight: 500;
+}
+
+h1, .h1 {
+    @include fluid-text(70, 30);
+    line-height: 1.2;
+}
+
+h2, .h2 {
+    @include fluid-text(58, 28);
+    line-height: 1.3;
+}
+
+h3, .h3 {
+    @include fluid-text(40, 24);
+}
+
+h4, .h4 {
+    @include fluid-text(26, 18);
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+    transition-duration: var(--transition-duration);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+:focus-visible { // Если переключаться клавиатурой
+    outline: rem(2) dashed var(--accent);
+    outline-offset: rem(4);
+    transition-duration: 0s !important;
+}
