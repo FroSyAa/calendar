@@ -4,7 +4,7 @@ import type { CalendarSlot } from '@/types/calendar'
 const DAY_COUNT = 5
 const START_HOUR = 10
 const END_HOUR = 19
-const HOURS = Array.from({ length: END_HOUR - START_HOUR + 1 }, (_, index) => START_HOUR + index)
+const HOURS = Array.from({ length: END_HOUR - START_HOUR }, (_, index) => START_HOUR + index)
 
 interface RangeAnchor {
     id: string
@@ -38,8 +38,6 @@ const weekDays = computed(() =>
     }),
 )
 
-const weekEnd = computed(() => weekDays.value[DAY_COUNT - 1]!.date)
-
 const slots = computed<CalendarSlot[]>(() => {
     const now = new Date()
     const todayStr = formatDate(now)
@@ -51,7 +49,7 @@ const slots = computed<CalendarSlot[]>(() => {
             date: day.dateStr,
             dayIndex,
             hour,
-            isDisabled: day.dateStr < todayStr || (day.dateStr === todayStr && hour <= currentHour),
+            isDisabled: day.dateStr === todayStr && hour < currentHour,
         })),
     )
 })
@@ -91,13 +89,19 @@ function saveWeek() {
 }
 
 function applyRange(from: CalendarSlot, to: CalendarSlot, shouldSelect: boolean) {
-    const startIndex = slots.value.indexOf(from)
-    const endIndex = slots.value.indexOf(to)
-    const start = Math.min(startIndex, endIndex)
-    const end = Math.max(startIndex, endIndex)
+    let start = -1
+    let end = -1
+    slots.value.forEach((slot, index) => {
+        if (slot.id === from.id) start = index
+        if (slot.id === to.id) end = index
+    })
+    if (start === -1 || end === -1) return
+
+    const rangeStart = Math.min(start, end)
+    const rangeEnd = Math.max(start, end)
 
     const next = new Set(selectedSlots.value)
-    for (let index = start; index <= end; index += 1) {
+    for (let index = rangeStart; index <= rangeEnd; index += 1) {
         const target = slots.value[index]
         if (!target || target.isDisabled) continue
         if (shouldSelect) next.add(target.id)
@@ -112,15 +116,15 @@ function handleSlotClick(slotId: string) {
 
     const anchor = rangeAnchor.value
 
-    if (anchor) {
-        if (anchor.id === slotId) {
-            const next = new Set(selectedSlots.value)
-            next.delete(slotId)
-            selectedSlots.value = next
-            rangeAnchor.value = null
-            return
-        }
+    if (anchor && anchor.id === slotId) {
+        const next = new Set(selectedSlots.value)
+        next.delete(slotId)
+        selectedSlots.value = next
+        rangeAnchor.value = null
+        return
+    }
 
+    if (anchor) {
         const anchorSlot = slotMap.value.get(anchor.id)
         rangeAnchor.value = null
         if (!anchorSlot) return
@@ -128,14 +132,14 @@ function handleSlotClick(slotId: string) {
         return
     }
 
-    if (selectedSlots.value.has(slotId)) {
-        rangeAnchor.value = { id: slotId }
-        return
-    }
-
     const next = new Set(selectedSlots.value)
-    next.add(slotId)
+    if (next.has(slotId)) {
+        next.delete(slotId)
+    } else {
+        next.add(slotId)
+    }
     selectedSlots.value = next
+    rangeAnchor.value = { id: slotId }
 }
 
 function clearAll() {
@@ -153,7 +157,7 @@ const dailyStats = computed(() => {
     const stats = Array<number>(DAY_COUNT).fill(0)
     selectedSlots.value.forEach((id) => {
         const slot = slotMap.value.get(id)
-        if (slot) stats[slot.dayIndex] += 1
+        if (slot) stats[slot.dayIndex] = (stats[slot.dayIndex] ?? 0) + 1
     })
     return stats
 })
@@ -169,8 +173,6 @@ export function useCalendar() {
     return {
         currentWeekStart,
         weekDays,
-        weekEnd,
-        hours: HOURS,
         dayColumns,
         selectedSlots,
         anchoredId,

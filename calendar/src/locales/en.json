@@ -14,9 +14,8 @@
         "totalFree": "Total free hours",
         "hoursShort": "h",
         "days": ["MON", "TUE", "WED", "THU", "FRI"],
-        "hintFirst": "Click a free slot to mark the hour. A second click on the marked slot sets the start of the range.",
-        "hintSecond": "Click a second slot: the range between them will be toggled.",
-        "today": "today"
+        "hintFirst": "Click a slot to mark the hour and set the range start. Clicking the same slot again clears the mark.",
+        "hintSecond": "Click a second slot: if it was marked, the range is cleared; otherwise it is marked."
     },
     "legend": {
         "free": "Free",
