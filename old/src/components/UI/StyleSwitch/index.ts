@@ -1,1 +1,0 @@
-export { StyleSwitch } from './StyleSwitch';
